@@ -1,6 +1,7 @@
 <template>
-  <div>
-    123
+  <div class="footer">
+    <div class="footer-logo"></div>
+    <div class="footer-link"></div>
   </div>
 </template>
 
