@@ -2,34 +2,57 @@
   <div class="index">
     <div class="container">
       <div class="swiper-box">
+        <div class="nav-menu"></div>
         <swiper :options="swiperOption">
           <swiper-slide v-for="(item, index) in slideList" :key="index">
             <a :href="'/#/product/'+item.id">
               <img :src="item.img" alt="">
             </a>
           </swiper-slide>
+           <div class="swiper-pagination" slot="pagination"></div>
+            <div class="swiper-button-prev" slot="button-prev"></div>
+             <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
       </div>
+      <div class="ads-box"></div>
+      <div class="banner"></div>
+      <div class="product-box"></div>
     </div>
     <service-bar></service-bar>
   </div>
 </template>
 
 <script>
-import {swiper,swiperSlide} from 'vue-awesome-swiper'
+import { Swiper,SwiperSlide } from 'vue-awesome-swiper'
 import ServiceBar from '../components/ServiceBar'
 import 'swiper/dist/css/swiper.css'
 export default {
   name: 'index',
   components:{
     ServiceBar,
-    swiper,
-    swiperSlide
+    Swiper,
+    SwiperSlide
   },
   data() {
     return {
       swiperOption:{
-
+        autoplay:true,
+        loop:true,
+        effect:"coverflow",
+        coverflowEffect: {
+          rotate: 33,
+          stretch: 10,
+          depth: 50,
+          modifier: 1,
+          slideShadows : true
+        },
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }
       },
       slideList:[
         {
@@ -58,5 +81,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.index{
+  .swiper-box{
+    .swiper-container{
+      height: 451px;
+      img{
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
 </style>
