@@ -4,6 +4,7 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
 const mock = false;
 if (mock) {
     require('./mock/api');
@@ -22,11 +23,13 @@ axios.interceptors.response.use(function(response) {
     } else if (res.status == 10) {
         window.location.href = '/#/login';
     } else {
-        alert(res.msg)
+        alert(res.msg);
+        return Promise.reject(res);
     }
 })
 
 Vue.use(VueAxios, axios)
+Vue.use(VueCookie)
 Vue.use(VueLazyLoad, {
     loading: '/imgs/loading-svg/loading-bars.svg'
 })
