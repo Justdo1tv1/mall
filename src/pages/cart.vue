@@ -157,7 +157,7 @@ export default {
       // 删除购物车商品
       delProduct(item){
         this.axios.delete(`/carts/${item.productId}`).then((res)=>{
-          // this.$message.success('删除成功');
+          this.$message.success('删除成功');
           this.renderData(res);
         });
       },
