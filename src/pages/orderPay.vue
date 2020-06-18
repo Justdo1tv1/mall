@@ -1,5 +1,10 @@
 <template>
   <div class="order-pay">
+    <order-header title="订单支付">
+      <template v-slot:tip>
+        <span>请谨防钓鱼链接或诈骗电话，了解更多</span>
+      </template>
+    </order-header>
     <div class="wrapper">
       <div class="container">
         <div class="order-wrap">
@@ -70,11 +75,13 @@
 import QRCode from 'qrcode'
 import ScanPayCode from '../components/ScanPayCode'
 import Modal from '../components/Modal'
+import OrderHeader from '../components/orderHeader'
 export default{
   name:'order-pay',
   components:{
     ScanPayCode,
-    Modal
+    Modal,
+    OrderHeader
   },
   data() {
     return {
@@ -105,6 +112,7 @@ export default{
     paySubmit(payType){
       if (payType==1) {
         window.open('/#/order/alipay?orderId='+this.orderId,'_blank')
+        this.showPayModal=true;
       }else {
         this.axios.post('/pay',{
         orderId:this.orderId,
