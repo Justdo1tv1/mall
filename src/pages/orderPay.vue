@@ -88,7 +88,7 @@ export default{
       orderId:this.$route.query.orderNo,
       addressInfo:'',
       orderDetail:[],
-      showDetail:false,
+      showDetail:true,
       payType:'',
       showPay:false,
       payImg:'',
