@@ -59,7 +59,7 @@
           </div>
           <div class="scroll-more"
             v-infinite-scroll="scrollMore"
-            infinite-scroll-disabled="true"
+            infinite-scroll-disabled="busy"
             infinite-scroll-distance="410"
             v-if="showNextPage"
           >
